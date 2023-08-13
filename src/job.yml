@@ -1,0 +1,18 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
+type: command
+code: model
+name: train_job_7
+command: python train.py --training_data ${{inputs.training_data}} 
+inputs:
+  training_data: 
+    type: uri_folder
+    path: azureml:diabetes-dev-folder@latest
+  # azureml://subscriptions/50fa0132-1a23-44e7-8af9-1d776d5b4c2a/resourcegroups/odsp_idc_ds_ab/workspaces/odsp_idc_ds_ab_ws/datastores/workspaceblobstore/paths/LocalUpload/534e63694838be564a42c83cb065f8fd/data/
+  reg_rate: 0.01
+environment: azureml:mlops-experiment@latest 
+# environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest
+# azureml://locations/eastus2/workspaces/fbafe2c0-dea5-436d-809f-0e16dee00f0f/environments/conda_df_env/versions/4
+# environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest
+compute: azureml:dineshgoyalforecasting
+experiment_name: mlops_experiment
+description: My mlops project
