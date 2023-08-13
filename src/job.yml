@@ -1,7 +1,7 @@
 $schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
 type: command
 code: model
-name: train_job_10
+name: train_job_11
 command: python train.py --training_data ${{inputs.training_data}} 
 inputs:
   training_data: 
