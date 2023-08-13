@@ -7,9 +7,21 @@ import mlflow
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
+from azureml.core.authentication import ServicePrincipalAuthentication
 from azureml.core.workspace import Workspace
 # import mlflow.sklearn
 # from mlflow import MlflowClient
+azure_tenant_id = os.environ.get("AZURE_TENANT_ID")
+azure_client_id = os.environ.get("AZURE_APP_ID")
+azure_client_secret = os.environ.get("AZURE_CLIENT_SECRET")
+
+print("------------------")
+print(azure_tenant_id)
+print(azure_client_id)
+print(azure_client_secret)
+print("-----------")
+    
+# auth = ServicePrincipalAuthentication(azure_tenant_id, azure_client_id, azure_client_secret)
 ws = Workspace.from_config()
 mlflow.set_tracking_uri(ws.get_mlflow_tracking_uri())
 # mlflow.set_tracking_uri("azureml://eastus2.api.azureml.ms/mlflow/v1.0/subscriptions/50fa0132-1a23-44e7-8af9-1d776d5b4c2a/resourceGroups/odsp_idc_ds_ab/providers/Microsoft.MachineLearningServices/workspaces/odsp_idc_ds_ab_ws")
